@@ -55,6 +55,7 @@ namespace CurrencyConverter_static
             DisableMaximizeButton();
         }
 
+        //to disable the minimise button
         protected void DisableMinimizeButton()
         {
             if (_windowHandle == IntPtr.Zero)
@@ -62,7 +63,8 @@ namespace CurrencyConverter_static
 
             SetWindowLong(_windowHandle, GWL_STYLE, GetWindowLong(_windowHandle, GWL_STYLE) & ~WS_MINIMIZEBOX);
         }
-
+        
+        //to disable the maximise button
         protected void DisableMaximizeButton()
         {
             if (_windowHandle == IntPtr.Zero)
@@ -119,7 +121,7 @@ namespace CurrencyConverter_static
             public string license;
         }
 
-        //Make sure API return value that name and where you want to store that name are same. Like in API get response INR then set it with INR name.
+        //Make sure API return value that name and where you want to store that name are same. Like in API get response INR should be INR.
         public class Rate
         {
             public double AED { get; set; }
@@ -166,7 +168,7 @@ namespace CurrencyConverter_static
         private async void GetValue()
         {
             //we use the GetData<>() task we just created (see async task below) and we provide the string (url) required
-            val = await GetData<Root>("https://openexchangerates.org/api/latest.json?app_id=myID");
+            val = await GetData<Root>("https://openexchangerates.org/api/latest.json?app_id=myID"); //the app_id has my own special ID replaced with myID
             BindCurrency();
         }
 
